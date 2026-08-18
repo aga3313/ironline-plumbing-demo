@@ -125,7 +125,8 @@ before including this script.
   function renderConfirmation() {
     const box = el("#confirm-summary");
     if (!box) return;
-    const confNum = "IL-" + Math.abs(hashCode(state.name + state.date + state.time)).toString().slice(0, 6);
+    const prefix = business.split(/\s+/).filter(w => /[A-Za-z]/.test(w[0])).slice(0, 2).map(w => w[0].toUpperCase()).join("") || "CN";
+    const confNum = prefix + "-" + Math.abs(hashCode(state.name + state.date + state.time)).toString().slice(0, 6);
     box.innerHTML = `
       <div class="b-confirm">
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
