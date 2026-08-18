@@ -20,7 +20,7 @@
         const el = entry.target;
         const target = el.dataset.count;
         const numMatch = target.match(/[\d,.]+/);
-        if (!numMatch) return;
+        if (!numMatch) { el.textContent = target; countIo.unobserve(el); return; }
         const end = parseFloat(numMatch[0].replace(/,/g, ""));
         const suffix = target.slice(numMatch[0].length);
         const prefix = target.slice(0, target.indexOf(numMatch[0]));
