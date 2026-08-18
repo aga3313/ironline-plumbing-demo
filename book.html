@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Online — Ironline Plumbing Co.</title>
+<meta name="description" content="Interactive booking flow prototype for a fictional San Antonio plumbing company, a HyperLink AI Studios portfolio piece.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
+      Ironline Plumbing Co.
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services &amp; Pricing</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="book.html" class="active">Book Online</a>
+    </nav>
+    <a class="nav-cta" href="tel:+12105550142">Call/Text (210) 555-0142</a>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom: 0;">
+  <div class="wrap" style="padding: 56px 28px 40px;text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">Book Online</div>
+    <h1 style="font-size: clamp(28px,3.6vw,40px);">Get on the schedule.</h1>
+    <p class="lede" style="margin:0 auto;">Pick a service, pick a time — takes under two minutes.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px;">
+  <div class="wrap">
+    <div class="booking-shell">
+      <div class="booking-steps">
+        <div class="booking-step-dot active">1<br><span class="label">Service</span></div>
+        <div class="booking-step-dot">2<br><span class="label">Date &amp; Time</span></div>
+        <div class="booking-step-dot">3<br><span class="label">Your Info</span></div>
+        <div class="booking-step-dot">4<br><span class="label">Confirm</span></div>
+      </div>
+
+      <div id="b-step-1" class="b-panel">
+        <h3 style="margin-bottom:16px;">What do you need done?</h3>
+        <div id="svc-list"></div>
+      </div>
+
+      <div id="b-step-2" class="b-panel">
+        <h3 style="margin-bottom:16px;">Pick a day</h3>
+        <div id="cal-grid" class="cal-grid"></div>
+        <h3 style="margin-bottom:16px;">Pick a time</h3>
+        <div id="time-grid" class="time-grid"></div>
+      </div>
+
+      <div id="b-step-3" class="b-panel">
+        <h3 style="margin-bottom:16px;">Where should we send the confirmation?</h3>
+        <div class="b-field"><label>Full name</label><input id="b-name" type="text" placeholder="Jordan Casey"></div>
+        <div class="b-field"><label>Phone</label><input id="b-phone" type="tel" placeholder="(210) 555-0100"></div>
+        <div class="b-field"><label>Email</label><input id="b-email" type="email" placeholder="you@email.com"></div>
+        <div class="b-field"><label>Anything we should know? (optional)</label><textarea id="b-notes" rows="3" placeholder="Gate code, parking, what's going on..."></textarea></div>
+      </div>
+
+      <div id="b-step-4" class="b-panel">
+        <div id="confirm-summary"></div>
+      </div>
+
+      <div class="b-nav">
+        <button id="b-back" class="btn btn-outline">← Back</button>
+        <button id="b-next" class="btn btn-orange" disabled>Continue</button>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:24px;">Prefer to talk it through? Call/text <a href="tel:+12105550142" style="color:var(--steel-dark);font-weight:600;">(210) 555-0142</a> — same number, real person.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Ironline Plumbing Co.</div>
+        <div style="color:#9fb0c2;font-size:14px;max-width:260px;">Licensed, insured, and on call 24/7 for San Antonio homeowners.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services &amp; Pricing</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="book.html">Book Online</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+12105550142">(210) 555-0142</a>
+        <a href="#">San Antonio, TX</a>
+        <a href="#">Open 24/7</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      This is a concept site — a fictional business created as a portfolio piece to demonstrate the caliber of website HyperLink AI Studios builds for home-service companies. Booking flow is a fully interactive front-end prototype; nothing submitted here is stored or sent anywhere. Not an operating business.
+      <br><a href="https://hyperlinkai.online" target="_blank" rel="noopener">See HyperLink AI Studios →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.BOOKING_BUSINESS = "Ironline Plumbing Co.";
+window.BOOKING_TODAY = "2026-08-18";
+window.BOOKING_SERVICES = [
+  { name: "Standard drain cleaning", price: "$149", desc: "Kitchen, bath, or laundry line" },
+  { name: "Water heater repair diagnostic", price: "$89", desc: "Waived if repaired" },
+  { name: "Water heater replacement", price: "from $1,299", desc: "Up to 50-gallon, installed" },
+  { name: "Leak detection", price: "from $175", desc: "Non-invasive acoustic/thermal" },
+  { name: "Fixture installation", price: "from $175", desc: "Faucet, toilet, or disposal" },
+  { name: "Emergency after-hours call-out", price: "from $129", desc: "Nights, weekends, holidays" },
+];
+</script>
+<script src="booking.js"></script>
+</body>
+</html>
