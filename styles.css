@@ -40,9 +40,22 @@ header.site-nav { position: sticky; top: 0; z-index: 50; background: var(--panel
 .nav-links { display: flex; gap: 30px; font-weight: 500; font-size: 15px; }
 .nav-links a { text-decoration: none; color: var(--muted); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: color .2s, border-color .2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--steel-dark); border-color: var(--orange); }
-.nav-cta { background: var(--orange); color: #fff; padding: 11px 22px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14.5px; white-space: nowrap; transition: background .2s; }
+.nav-cta { display: flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; padding: 11px 22px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14.5px; white-space: nowrap; transition: background .2s; flex-shrink: 0; }
 .nav-cta:hover { background: var(--orange-dark); }
-.nav-toggle { display: none; }
+.nav-cta svg { width: 17px; height: 17px; flex-shrink: 0; display: none; }
+.nav-toggle { display: none; width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { display: block; width: 18px; height: 2px; background: var(--ink); position: relative; transition: transform .25s ease, opacity .25s ease; }
+.nav-toggle span::before, .nav-toggle span::after { content: ''; position: absolute; left: 0; }
+.nav-toggle span::before { top: -6px; }
+.nav-toggle span::after { top: 6px; }
+.nav-toggle.open span { background: transparent; }
+.nav-toggle.open span::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span::after { transform: translateY(-6px) rotate(-45deg); }
+.mobile-menu { display: none; flex-direction: column; background: var(--panel); border-top: 1px solid var(--border); padding: 8px 28px 20px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 13px 0; border-bottom: 1px solid var(--border); color: var(--text); text-decoration: none; font-weight: 600; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a.active { color: var(--orange-dark); }
 
 /* ---- Buttons ---- */
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 15.5px; border: 2px solid transparent; cursor: pointer; font-family: var(--body); transition: all .2s; }
@@ -235,6 +248,14 @@ footer.site-footer { background: var(--ink); color: #c2b9a8; padding: 50px 0 30p
   .stat-grid { grid-template-columns: 1fr 1fr; }
   .stat-item:nth-child(3) { border-left: none; }
   .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-inner { padding: 13px 18px; gap: 10px; }
+  .brand { font-size: 15px; gap: 8px; }
+  .brand-mark { width: 32px; height: 32px; border-radius: 7px; }
+  .brand-mark svg { width: 18px; height: 18px; }
+  .nav-cta .cta-text { display: none; }
+  .nav-cta svg { display: block; }
+  .nav-cta { padding: 9px; border-radius: 8px; }
   .footer-grid { flex-direction: column; }
   .price-row { flex-direction: column; }
   .price-tag { text-align: left; }
