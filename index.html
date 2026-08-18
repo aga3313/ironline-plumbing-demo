@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ironline Plumbing Co. — San Antonio, TX</title>
+<meta name="description" content="Concept website design for a San Antonio, TX home-service business, built by HyperLink AI Studios as a portfolio piece.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #0a0b12; --panel: #12141f; --panel-2: #171a28;
+  --gold: #c9a464; --gold-bright: #e8cd94; --signal: #8b7cf6; --cyan: #5eeadb;
+  --text: #f3efe6; --muted: #9691a8; --border: rgba(201,164,100,0.16);
+  --display: 'Space Grotesk', sans-serif; --body: 'Plus Jakarta Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--void); color: var(--text); font-family: var(--body); overflow-x: hidden; line-height: 1.6; }
+#field { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.wrap { position: relative; z-index: 2; }
+.section { max-width: 1120px; margin: 0 auto; padding: 120px 32px; }
+.section.tight { padding-top: 60px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 12.5px; font-weight: 600; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 24px; }
+.eyebrow .bracket { color: var(--muted); font-weight: 400; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; }
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity .9s cubic-bezier(.16,.8,.24,1), transform .9s cubic-bezier(.16,.8,.24,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; backdrop-filter: blur(14px); background: linear-gradient(180deg, rgba(10,11,18,0.85), rgba(10,11,18,0)); }
+.logo { display: flex; align-items: center; gap: 12px; font-family: var(--display); font-weight: 700; font-size: 17px; }
+.logo-badge { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--gold), var(--signal)); display: flex; align-items: center; justify-content: center; color: var(--void); font-size: 14px; font-weight: 700; flex-shrink: 0; }
+.navlinks { display: flex; gap: 34px; font-size: 14px; color: var(--muted); }
+.navlinks a { color: var(--muted); text-decoration: none; transition: color .3s; }
+.navlinks a:hover { color: var(--text); }
+.navcta { padding: 10px 20px; border: 1px solid var(--border); border-radius: 999px; font-size: 13.5px; color: var(--gold-bright); text-decoration: none; transition: all .3s; white-space: nowrap; }
+.navcta:hover { background: var(--gold); color: var(--void); border-color: var(--gold); }
+
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; max-width: 940px; margin: 0 auto; padding: 150px 32px 60px; }
+.hero-frag { font-size: clamp(42px, 6.4vw, 82px); line-height: 1.08; margin-bottom: 28px; }
+.hero-frag .line { display: block; }
+.hero-frag .accent { background: linear-gradient(90deg, var(--gold-bright), var(--gold) 55%, var(--signal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p.lede { font-size: 18.5px; color: var(--muted); max-width: 560px; margin-bottom: 40px; }
+.cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-primary { padding: 15px 28px; background: var(--gold); color: var(--void); font-family: var(--display); font-weight: 600; font-size: 15px; border-radius: 8px; text-decoration: none; transition: all .3s; display: inline-block; }
+.btn-primary:hover { box-shadow: 0 8px 30px rgba(201,164,100,0.35); transform: translateY(-2px); }
+.btn-ghost { padding: 15px 4px; color: var(--text); text-decoration: none; font-size: 15px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; max-width: 1120px; margin: 0 auto; }
+.stat-cell { background: var(--panel); padding: 30px 20px; text-align: center; }
+.stat-num { font-family: var(--display); font-size: clamp(22px,3vw,30px); font-weight: 700; color: var(--gold-bright); margin-bottom: 6px; }
+.stat-label { font-size: 12.5px; color: var(--muted); letter-spacing: 0.02em; }
+
+.section-head { max-width: 640px; margin: 0 auto 60px; text-align: center; }
+.section-head h2 { font-size: clamp(28px,4vw,40px); text-wrap: balance; }
+.section-head p { color: var(--muted); font-size: 16.5px; margin-top: 14px; }
+
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.service-card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 30px 26px; transition: border-color .3s, transform .3s; }
+.service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.service-card h3 { font-size: 18px; margin-bottom: 10px; }
+.service-card p { color: var(--muted); font-size: 14.5px; }
+
+.process-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.process-step { position: relative; padding-left: 54px; }
+.process-num { position: absolute; left: 0; top: 0; width: 38px; height: 38px; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; color: var(--gold); }
+.process-step h3 { font-size: 17px; margin-bottom: 8px; }
+.process-step p { color: var(--muted); font-size: 14.5px; }
+
+.testimonial-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.testi-card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 30px; }
+.testi-quote { font-size: 16px; color: var(--text); margin-bottom: 18px; }
+.testi-name { font-family: var(--display); font-weight: 600; font-size: 14px; }
+.testi-loc { color: var(--muted); font-size: 13px; }
+.stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+
+.final-cta { text-align: center; background: var(--panel); border: 1px solid var(--border); border-radius: 20px; padding: 70px 40px; max-width: 1120px; margin: 0 auto; }
+.final-cta h2 { font-size: clamp(26px,3.6vw,38px); margin-bottom: 16px; text-wrap: balance; }
+.final-cta p { color: var(--muted); font-size: 16.5px; margin-bottom: 32px; }
+
+footer { border-top: 1px solid var(--border); padding: 50px 32px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+.footer-biz { font-family: var(--display); font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+.footer-meta { color: var(--muted); font-size: 13.5px; }
+.footer-credit { color: var(--muted); font-size: 13px; max-width: 380px; line-height: 1.6; }
+.footer-credit a { color: var(--gold-bright); text-decoration: none; }
+.footer-credit a:hover { text-decoration: underline; }
+
+.concept-badge { position: fixed; bottom: 20px; right: 20px; z-index: 60; background: rgba(18,20,31,0.92); border: 1px solid var(--border); backdrop-filter: blur(10px); border-radius: 999px; padding: 9px 16px; font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.concept-badge a { color: var(--gold-bright); text-decoration: none; font-weight: 600; }
+.concept-badge a:hover { text-decoration: underline; }
+.concept-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+
+@media (max-width: 860px) {
+  .navlinks { display: none; }
+  .services-grid, .process-row, .testimonial-row { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { flex-direction: column; }
+  .concept-badge { left: 16px; right: 16px; justify-content: center; }
+  nav { padding: 16px 20px; }
+  .logo { font-size: 15px; gap: 9px; }
+  .logo-badge { width: 30px; height: 30px; font-size: 12px; border-radius: 8px; }
+  .navcta { padding: 8px 14px; font-size: 12.5px; }
+}
+</style>
+</head>
+<body>
+<canvas id="field"></canvas>
+<div class="wrap">
+
+<nav>
+  <div class="logo"><div class="logo-badge">IP</div>Ironline Plumbing Co.</div>
+  <div class="navlinks"><a href="#services">Services</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div>
+  <a class="navcta" href="tel:+12105550142">Call/Text (210) 555-0142</a>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow reveal"><span class="bracket">(</span> LICENSED & INSURED PLUMBING <span class="bracket">)</span></div>
+  <h1 class="hero-frag reveal">
+    <span class="line">A burst pipe doesn't</span>
+    <span class="line"><span class="accent">wait</span> for business hours.</span>
+  </h1>
+  <p class="lede reveal">Ironline is on call around the clock for San Antonio homeowners — real plumbers, upfront pricing, no overtime surprise fees.</p>
+  <div class="cta-row reveal">
+    <a class="btn-primary" href="tel:+12105550142">Call/Text (210) 555-0142</a>
+    <a class="btn-ghost" href="#services">See services →</a>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="stats-bar reveal">
+    <div class="stat-cell"><div class="stat-num">24/7</div><div class="stat-label">Emergency Response</div></div>
+    <div class="stat-cell"><div class="stat-num">15 min</div><div class="stat-label">Avg. Callback Time</div></div>
+    <div class="stat-cell"><div class="stat-num">4.9★</div><div class="stat-label">Google Rating</div></div>
+    <div class="stat-cell"><div class="stat-num">500+</div><div class="stat-label">Jobs Completed</div></div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-head reveal">
+    <div class="eyebrow"><span class="bracket">(</span> WHAT WE DO <span class="bracket">)</span></div>
+    <h2>Services built around San Antonio homes</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal"><h3>Emergency Leak Repair</h3><p>Burst pipes and active leaks handled fast, day or night, before real damage sets in.</p></div>
+    <div class="service-card reveal"><h3>Drain & Sewer Cleaning</h3><p>Camera-inspected clogs and sewer lines cleared without guesswork.</p></div>
+    <div class="service-card reveal"><h3>Water Heater Install & Repair</h3><p>Tank and tankless systems installed, serviced, and sized right for your home.</p></div>
+    <div class="service-card reveal"><h3>Repiping & Fixture Upgrades</h3><p>Aging galvanized or polybutylene lines replaced before they fail on their own.</p></div>
+    <div class="service-card reveal"><h3>Slab Leak Detection</h3><p>Non-invasive leak detection that finds the problem without tearing up the whole floor.</p></div>
+    <div class="service-card reveal"><h3>Commercial Plumbing</h3><p>Scheduled maintenance and rapid response for local shops and offices.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head reveal">
+    <div class="eyebrow"><span class="bracket">(</span> HOW IT WORKS <span class="bracket">)</span></div>
+    <h2>Three steps. No wasted motion.</h2>
+  </div>
+  <div class="process-row">
+    <div class="process-step reveal"><div class="process-num">1</div><h3>Call or text</h3><p>Reach a real person, not a call tree — day or night.</p></div>
+    <div class="process-step reveal"><div class="process-num">2</div><h3>We diagnose on-site</h3><p>A licensed plumber inspects the problem and explains what's actually wrong.</p></div>
+    <div class="process-step reveal"><div class="process-num">3</div><h3>Upfront quote, same-day fix</h3><p>You approve the price before any work starts. No surprise invoices.</p></div>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="section-head reveal">
+    <div class="eyebrow"><span class="bracket">(</span> REVIEWS <span class="bracket">)</span></div>
+    <h2>What San Antonio homeowners say</h2>
+  </div>
+  <div class="testimonial-row">
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><div class="testi-quote">"Called at 11pm with a burst pipe and someone was actually here in 40 minutes. Fixed it right, explained everything."</div><div class="testi-name">Maria T.</div><div class="testi-loc">San Antonio, TX</div></div>
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><div class="testi-quote">"Quoted the price before touching anything. No upsell, no games — just fixed the leak and left."</div><div class="testi-name">Dave R.</div><div class="testi-loc">San Antonio, TX</div></div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="final-cta reveal">
+    <h2>Something not working right at home?</h2>
+    <p>Call or text Ironline Plumbing Co. — same number handles both.</p>
+    <a class="btn-primary" href="tel:+12105550142">Call/Text (210) 555-0142</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-biz">Ironline Plumbing Co.</div>
+      <div class="footer-meta">San Antonio, TX · (210) 555-0142</div>
+    </div>
+    <div class="footer-credit">
+      This is a concept site — a fictional business created as a portfolio
+      piece to demonstrate the caliber of website HyperLink AI Studios
+      builds for home-service companies. Not an operating business.
+      <br><a href="https://hyperlinkai.online" target="_blank" rel="noopener">See HyperLink AI Studios →</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<div class="concept-badge"><span class="concept-dot"></span> Concept demo by <a href="https://hyperlinkai.online" target="_blank" rel="noopener">HyperLink AI Studios</a></div>
+
+<script>
+const canvas = document.getElementById('field');
+const ctx = canvas.getContext('2d');
+let w, h, particles = [];
+const COLORS = ['#c9a464', '#8b7cf6', '#5eeadb'];
+const COUNT = 180;
+function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize); resize();
+function makeParticle() { return { x: (Math.random()-0.5)*w*1.6, y: (Math.random()-0.5)*h*1.6, z: Math.random()*1.2+0.05, color: COLORS[Math.floor(Math.random()*COLORS.length)] }; }
+for (let i=0;i<COUNT;i++) particles.push(makeParticle());
+let scrollVelocity=0, lastScrollY=window.scrollY, smoothVelocity=0;
+function draw() {
+  ctx.fillStyle='rgba(10,11,18,0.32)'; ctx.fillRect(0,0,w,h);
+  const cx=w/2, cy=h/2;
+  smoothVelocity += (scrollVelocity - smoothVelocity) * 0.08;
+  const speed = 0.0025 + Math.min(Math.abs(smoothVelocity)*0.00006, 0.045);
+  for (const p of particles) {
+    p.z -= speed;
+    if (p.z <= 0.02) { Object.assign(p, makeParticle()); p.z = 1.2; }
+    const sx = cx + (p.x/p.z)*0.6, sy = cy + (p.y/p.z)*0.6;
+    if (sx<-50||sx>w+50||sy<-50||sy>h+50) continue;
+    const size = Math.max(0.4,(1-p.z)*2.6), alpha = Math.max(0,Math.min(1,(1-p.z)*1.3));
+    const px = cx + (p.x/(p.z+speed*5))*0.6, py = cy + (p.y/(p.z+speed*5))*0.6;
+    ctx.strokeStyle=p.color; ctx.globalAlpha=alpha*0.5; ctx.lineWidth=size*0.7;
+    ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(sx,sy); ctx.stroke();
+    ctx.globalAlpha=alpha; ctx.fillStyle=p.color;
+    ctx.beginPath(); ctx.arc(sx,sy,size,0,Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha=1; scrollVelocity*=0.9;
+  requestAnimationFrame(draw);
+}
+draw();
+window.addEventListener('scroll', () => { const y=window.scrollY; scrollVelocity=(y-lastScrollY)*4; lastScrollY=y; }, {passive:true});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry,i) => { if (entry.isIntersecting) { setTimeout(()=>entry.target.classList.add('in'), i*60); io.unobserve(entry.target); } });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
